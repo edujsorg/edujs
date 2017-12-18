@@ -1,0 +1,24 @@
+{
+  "name": "edujs",
+  "version": "1.0.0",
+  "description": "A library of helpers for teaching and learning JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edujsorg/edujs.git"
+  },
+  "keywords": [
+    "education",
+    "graphics",
+    "helper"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edujsorg/edujs/issues"
+  },
+  "homepage": "https://github.com/edujsorg/edujs#readme"
+}
