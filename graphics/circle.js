@@ -6,9 +6,9 @@ function Circle(radius) {
     if (arguments.length !== 1) {
         throw new Error(`Circle constructor expected 1 argument (${arguments.length} given).`);
     }
-    if (typeof width !== 'number' || !isFinite(width)) {
+    if (typeof radius !== 'number' || !isFinite(radius)) {
         throw new TypeError(
-            `First argument to Circle constructor must be a number (${typeof width} given).`
+            `First argument to Circle constructor must be a number (${typeof radius} given).`
         );
     }
 

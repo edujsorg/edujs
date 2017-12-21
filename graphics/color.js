@@ -4,7 +4,7 @@
  * @namespace Color
  */
 
-var Randomizer = require('./randomizer.js');
+var randomizer = require('../randomizer/index.js');
 
 /**
  * @class Color
@@ -26,7 +26,7 @@ Color.prototype.toString = function() {
     return Color.createFromRGB(this.r, this.g, this.b);
 };
 
-Color.random = Randomizer.nextColor;
+Color.random = randomizer.nextColor;
 
 Color.constants = {
     red: '#FF0000',
@@ -103,7 +103,7 @@ Color.createFromRGB = function(r, g, b) {
  * @returns {string} Hex representation of random red color.
  */
 Color.randomRed = function() {
-    var r = Randomizer.nextInt(50, 255);
+    var r = randomizer.nextInt(50, 255);
     return Color.createFromRGB(r, 0, 0);
 };
 
@@ -113,7 +113,7 @@ Color.randomRed = function() {
  * @returns {string} Hex representation of random green color.
  */
 Color.randomGreen = function() {
-    var g = Randomizer.nextInt(50, 255);
+    var g = randomizer.nextInt(50, 255);
     return Color.createFromRGB(0, g, 0);
 };
 
@@ -123,7 +123,7 @@ Color.randomGreen = function() {
  * @returns {string} Hex representation of random blue color.
  */
 Color.randomBlue = function() {
-    var b = Randomizer.nextInt(50, 255);
+    var b = randomizer.nextInt(50, 255);
     return Color.createFromRGB(0, 0, b);
 };
 
