@@ -22,6 +22,5 @@
   },
   "homepage": "https://github.com/edujsorg/edujs#readme",
   "dependencies": {
-    "jquery": "^3.2.1"
   }
 }
