@@ -5,7 +5,7 @@ var $ = require('jquery');
 /**
  * @constructor
  */
-function EduJSConsole(selector) {
+function Console(selector) {
     this.consoleSelector = selector;
 }
 
@@ -13,7 +13,7 @@ function EduJSConsole(selector) {
  * Check if a DOM element with the provided selector exists.
  * @returns {boolean}
  */
-EduJSConsole.prototype.exists = function() {
+Console.prototype.exists = function() {
     return $.find(this.consoleSelector).length;
 };
 
@@ -21,18 +21,18 @@ EduJSConsole.prototype.exists = function() {
  * Gets the text output from the console.
  * @returns {string}
  */
-EduJSConsole.prototype.getOutput = function() {
+Console.prototype.getOutput = function() {
     return $(this.consoleSelector).text();
 };
 
 /**
  * Removes all text from the console.
  */
-EduJSConsole.prototype.clear = function() {
+Console.prototype.clear = function() {
     $(this.consoleSelector).text('');
 };
 
-EduJSConsole.prototype.scrollToBottom = function() {
+Console.prototype.scrollToBottom = function() {
     if (this.exists()) {
         var console = $(this.consoleSelector);
         console.scrollTop(console.scrollHeight);
@@ -41,12 +41,12 @@ EduJSConsole.prototype.scrollToBottom = function() {
 
 // TODO figure out how this works.
 // it's mirroring readLinePrivate
-EduJSConsole.prototype.readInput = function(promptStr, parser) {
+Console.prototype.readInput = function(promptStr, parser) {
     var input = prompt(promptStr);
     return parser(input);
 };
 
-EduJSConsole.prototype.println = function(output) {
+Console.prototype.println = function(output) {
     if (!this.exists()) {
         window.console.log(output);
     } else {
@@ -56,7 +56,7 @@ EduJSConsole.prototype.println = function(output) {
     }
 };
 
-EduJSConsole.prototype.readBoolean = function(promptStr) {
+Console.prototype.readBoolean = function(promptStr) {
     if (arguments.length !== 1) {
         throw new Error('readBoolean takes one argument.');
     }
@@ -74,20 +74,18 @@ EduJSConsole.prototype.readBoolean = function(promptStr) {
     });
 };
 
-EduJSConsole.prototype.readInt = function(promptStr) {
+Console.prototype.readInt = function(promptStr) {
     if (arguments.length !== 1) {
         throw new Error('readInt takes one argument.');
     }
     return this.readInput(promptStr, parseInt);
 };
 
-EduJSConsole.prototype.readFloat = function(promptStr) {
+Console.prototype.readFloat = function(promptStr) {
     if (arguments.length !== 1) {
         throw new Error('readFloat takes one argument.');
     }
     return this.readInput(promptStr, parseFloat);
 };
 
-module.exports = {
-    EduJSConsole: EduJSConsole,
-};
+module.exports = Console;

@@ -2,9 +2,9 @@
 
 var edujs = {};
 
-edujs.console = require('./console');
-edujs.dataStructures = require('./datastructures');
+edujs.console = require('./console/index.js');
+edujs.dataStructures = require('./datastructures/index.js');
 edujs.graphics = require('./graphics/index.js');
-edujs.keyboard = require('./keyboard/index.js');
+edujs.randomizer = require('./randomizer/index.js');
 
 module.exports = edujs;
