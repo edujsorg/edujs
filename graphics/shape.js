@@ -1,12 +1,14 @@
 'use strict';
 
+var color = require('../color/index.js');
+
 var DEGREES = 0;
 var RADIANS = 1;
 
 function Shape() {
     this.x = 0;
     this.y = 0;
-    this.color = '#000000';
+    this.color = color.black;
     this.stroke = '#000000';
     this.type = 'Shape';
     this.lineWidth = 1;

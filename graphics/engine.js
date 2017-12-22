@@ -11,7 +11,7 @@ function Engine(canvasSelector) {
     _resetState.call(this);
     _setCanvas.call(this, canvasSelector);
     _setup.call(this);
-    $(document).on('load', _interceptWindowEvents.call(this));
+    _interceptWindowEvents.call(this);
     // to be used for intercepting window keydown events
 }
 

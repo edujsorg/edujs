@@ -1,6 +1,7 @@
 'use strict';
 
 var Shape = require('./shape.js');
+var color = require('../color/index.js');
 
 function Circle(radius) {
     if (arguments.length !== 1) {
@@ -14,7 +15,6 @@ function Circle(radius) {
 
     Shape.call(this);
     this.radius = Math.max(0, radius);
-    this.color = '#000000';
     this.lineWidth = 3;
     this.type = 'Circle';
 }
