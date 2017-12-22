@@ -1,6 +1,5 @@
 'use strict';
 
-var $ = require('jquery');
 var Keyboard = require('../keyboard/index.js');
 
 var FRAME_RATE = 40;
@@ -189,10 +188,11 @@ Engine.prototype.resetAllTimers = function() {
 
 function _setCanvas(canvasSelector) {
     if (canvasSelector) {
-        this.canvas = $(canvasSelector)[0];
-    } else {
-        this.canvas = $('canvas')[0];
+        canvasSelector = canvasSelector.startsWith('#') ? canvasSelector.substr(1) : canvasSelector;
+        this.canvas = document.getElementById(canvasSelector);
     }
+
+    // console.log('break');
 
     this.canvas = this.canvas || _createCanvas();
     _refresh.call(this);
@@ -346,15 +346,15 @@ function _getBaseCoordinates(e, target) {
         y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
 
-    var offset = target.offset();
-    x -= offset.left;
-    y -= offset.top;
+    // var offset = target.offset();
+    x -= target.offsetLeft;
+    y -= target.offsetTop;
 
     return {x: x, y: y};
 }
 
 function _getMouseCoordinates(e) {
-    var baseCoordinates = _getBaseCoordinates.call(this, e, $(e.currentTarget));
+    var baseCoordinates = _getBaseCoordinates.call(this, e, e.currentTarget);
     var x = baseCoordinates.x;
     var y = baseCoordinates.y;
 
@@ -366,7 +366,7 @@ function _getMouseCoordinates(e) {
 }
 
 function _getTouchCoordinates(e) {
-    var baseCoordinates = _getBaseCoordinates(e, $(e.target));
+    var baseCoordinates = _getBaseCoordinates(e, e.target);
     var x = baseCoordinates.x;
     var y = baseCoordinates.y;
 
