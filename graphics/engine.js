@@ -11,7 +11,6 @@ function Engine(canvasSelector) {
     _setCanvas.call(this, canvasSelector);
     _setup.call(this);
     _interceptWindowEvents.call(this);
-    // to be used for intercepting window keydown events
 }
 
 Engine.prototype.constructor = Engine;
@@ -187,10 +186,7 @@ Engine.prototype.resetAllTimers = function() {
 };
 
 function _setCanvas(canvasSelector) {
-    if (canvasSelector) {
-        canvasSelector = canvasSelector.startsWith('#') ? canvasSelector.substr(1) : canvasSelector;
-        this.canvas = document.getElementById(canvasSelector);
-    }
+    this.canvas = document.querySelector(canvasSelector);
 
     // console.log('break');
 

@@ -4,7 +4,7 @@
  * @constructor
  */
 function Console(selector) {
-    this.consoleSelector = selector.startsWith('#') ? selector.substr(1) : selector;
+    this.consoleSelector = selector;
 }
 
 /**
@@ -12,11 +12,11 @@ function Console(selector) {
  * @returns {boolean}
  */
 Console.prototype.exists = function() {
-    return typeof document.getElementById(this.consoleSelector) !== 'undefined';
+    return typeof document.querySelector(this.consoleSelector) !== 'undefined';
 };
 
 Console.prototype.getConsole = function() {
-    return document.getElementById(this.consoleSelector);
+    return document.querySelector(this.consoleSelector);
 };
 
 /**
