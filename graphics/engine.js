@@ -88,7 +88,7 @@ Engine.prototype.stopAllTimers = function() {
 
 Engine.prototype.setTimer = function(callback, time, data, name) {
     if (arguments.length < 2) {
-        throw new Error(`setTimer expected 3 or more arguments (${arguments.length} given).`);
+        throw new Error(`setTimer expected 2 or more arguments (${arguments.length} given).`);
     }
     if (typeof callback !== 'function') {
         throw new TypeError(
