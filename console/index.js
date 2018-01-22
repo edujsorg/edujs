@@ -1,7 +1,5 @@
 'use strict';
 
-var $ = require('jquery');
-
 /**
  * @constructor
  */
@@ -14,7 +12,11 @@ function Console(selector) {
  * @returns {boolean}
  */
 Console.prototype.exists = function() {
-    return $.find(this.consoleSelector).length;
+    return typeof document.querySelector(this.consoleSelector) !== 'undefined';
+};
+
+Console.prototype.getConsole = function() {
+    return document.querySelector(this.consoleSelector);
 };
 
 /**
@@ -22,20 +24,20 @@ Console.prototype.exists = function() {
  * @returns {string}
  */
 Console.prototype.getOutput = function() {
-    return $(this.consoleSelector).text();
+    return this.getConsole().textContent;
 };
 
 /**
  * Removes all text from the console.
  */
 Console.prototype.clear = function() {
-    $(this.consoleSelector).text('');
+    this.getConsole().textContent = '';
 };
 
 Console.prototype.scrollToBottom = function() {
     if (this.exists()) {
-        var console = $(this.consoleSelector);
-        console.scrollTop(console.scrollHeight);
+        var console = this.getConsole();
+        window.scrollTo(0, console.innerHeight);
     }
 };
 
@@ -50,8 +52,8 @@ Console.prototype.println = function(output) {
     if (!this.exists()) {
         window.console.log(output);
     } else {
-        var console = $(this.consoleSelector);
-        console.append(output + '\n');
+        var console = this.getConsole();
+        console.textContent += output + '\n';
         this.scrollToBottom();
     }
 };
